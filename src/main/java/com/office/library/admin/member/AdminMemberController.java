@@ -91,6 +91,17 @@ public class AdminMemberController {
 		return nextPage;
 		
 	}
+	/* 
+	 * 로그아웃 
+	 */
+	@GetMapping("/logoutConfirm")
+	public String logoutConfirm(HttpSession session) {
+		System.out.println("[AdminMemberController] logoutConfirm()");
+		session.invalidate(); // session 초기화
+		String nextPage = "redirect:/admin"; //loacalhost:8080/library/admin 동일	
+		return nextPage;
+		
+	}
 	
 	/*
 	 * 관리자 목록(Model 사용)
