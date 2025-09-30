@@ -92,7 +92,7 @@ public class AdminMemberController {
 		
 	}
 	/* 
-	 * 로그아웃 
+	 * logout 처리 
 	 */
 	@GetMapping("/logoutConfirm")
 	public String logoutConfirm(HttpSession session) {
@@ -132,6 +132,34 @@ public class AdminMemberController {
 		
 		return nextPage;
 		
+	}
+	
+	/*
+	 * 비밀번호 찾기
+	 */
+//	@RequestMapping(value = "/findPasswordForm", method = RequestMethod.GET)
+	@GetMapping("/findPasswordForm")
+	public String findePasswordForm() {
+		System.out.println("[AdminMemberController] findPasswordForm()");	
+		String nextPage = "admin/member/find_password_form";	
+		return nextPage;
+	}
+	/*
+	 * 비밀번호 찾기 확인
+	 */
+//	@RequestMapping(value = "/findPasswordConfirm", method = RequestMethod.POST)
+	@PostMapping("/findPasswordConfirm")
+	public String findPasswordConfirm(AdminMemberVo adminMemberVo) {
+		System.out.println("[AdminMemberController] findPasswordConfirm()");
+		
+		String nextPage = "admin/member/find_password_ok";
+		
+		int result = adminMemberService.findPasswordConfirm(adminMemberVo);
+		
+		if (result <= 0)
+			nextPage = "admin/member/find_password_ng";
+		
+		return nextPage;
 	}
 
 }
