@@ -18,6 +18,7 @@ import com.office.library.admin.member.AdminMemberVo;
 import com.office.library.book.BookVo;
 import com.office.library.book.admin.util.UploadFileService;
 
+//@Controller("admin.BookController") //  같은 이름의 Bean 에러처리
 @Controller
 @RequestMapping("/book/admin")
 public class BookController {
