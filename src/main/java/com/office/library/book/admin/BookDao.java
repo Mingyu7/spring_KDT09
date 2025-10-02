@@ -103,7 +103,7 @@ public class BookDao {
 					
 				}
 				
-			}, "%" + bookVo.getB_name() + "%");
+			}, "%" + bookVo.getB_name() + "%"); // 검색 조건 ex)%컴퓨터% 
 			
 		} catch (Exception e) {
 			e.printStackTrace();
