@@ -28,4 +28,3 @@ public class HopeBookVo {
 	String u_m_mod_date;
 	
 }
-

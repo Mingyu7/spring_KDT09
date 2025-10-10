@@ -20,7 +20,6 @@ public class UploadFileService {
 		String uploadDir = "C:\\library\\upload\\";
 		
 		UUID uuid = UUID.randomUUID();
-		System.out.println("uuid:"+uuid);
 		String uniqueName = uuid.toString().replaceAll("-", "");
 		
 		File saveFile = new File(uploadDir + "\\" + uniqueName + fileExtension);
