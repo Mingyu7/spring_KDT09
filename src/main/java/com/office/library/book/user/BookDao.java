@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import com.office.library.book.BookVo;
+import com.office.library.book.HopeBookVo;
 import com.office.library.book.RentalBookVo;
 
 @Component
@@ -273,6 +275,53 @@ public class BookDao {
 		return rentalBookVos;
 		
 	}
+	public int insertHopeBook(HopeBookVo hopeBookVo) {
+		System.out.println("[BookDao] insertHopeBook()");
+		
+		String sql =  "INSERT INTO tbl_hope_book(u_m_no, hb_name, hb_author, hb_publisher, "
+					+ "hb_publish_year, hb_reg_date, hb_mod_date, hb_result_last_date) "
+					+ "VALUES(?, ?, ?, ?, ?, NOW(), NOW(), NOW())";
+		
+		int result = -1;
+		
+		try {
+			
+			result = jdbcTemplate.update(sql, 
+											hopeBookVo.getU_m_no(), 
+											hopeBookVo.getHb_name(), 
+											hopeBookVo.getHb_author(), 
+											hopeBookVo.getHb_publisher(), 
+											hopeBookVo.getHb_publish_year());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+		
+		return result;
+		
+	}
+	public List<HopeBookVo> selectRequestHopeBooks(int u_m_no) {
+		System.out.println("[BookDao] insertHopeBook()");
+		
+		String sql = "SELECT * FROM tbl_hope_book WHERE u_m_no = ?";
+		
+		List<HopeBookVo> hopeBookVos = null;
+		
+		try {
+			
+			RowMapper<HopeBookVo> rowMapper = BeanPropertyRowMapper.newInstance(HopeBookVo.class);
+			hopeBookVos = jdbcTemplate.query(sql, rowMapper, u_m_no);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+		
+		return hopeBookVos;
+		
+	}
+
 	
 	
 }

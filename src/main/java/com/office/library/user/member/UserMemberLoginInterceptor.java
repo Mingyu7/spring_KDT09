@@ -7,8 +7,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class UserMemberLoginInterceptor extends HandlerInterceptorAdapter {
-
-	 @Override
+	
+	// 로그인 화면으로 이동시키기
+	 @Override 
 	   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 	         throws Exception {
 	      HttpSession session = request.getSession();

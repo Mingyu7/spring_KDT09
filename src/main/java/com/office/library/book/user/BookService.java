@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.office.library.book.BookVo;
+import com.office.library.book.HopeBookVo;
 import com.office.library.book.RentalBookVo;
 
 @Service
@@ -55,5 +56,17 @@ public class BookService {
 		return bookDao.selectRentalBookHistory(u_m_no);
 		
 	}
-	
+	public int requestHopeBookConfirm(HopeBookVo hopeBookVo) {
+		System.out.println("[BookService] requestHopeBookConfirm()");
+		
+		return bookDao.insertHopeBook(hopeBookVo);
+		
+	}
+
+	public List<HopeBookVo> listupRequestHopeBook(int u_m_no) {
+		System.out.println("[BookService] listupRequestHopeBook()");
+		
+		return bookDao.selectRequestHopeBooks(u_m_no);
+		
+	}
 }
